@@ -1,68 +1,185 @@
 package com.zoro.mytestproject;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     private TextView textView;
-    private  Integer oneNumber,twoNumber;
-    public Boolean isOperationClick;
+    private Integer first, second;
+    private boolean isOperationClick;
+    private String onClear;
+    private String operation;
+    private Integer result;
+
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.text_view);
     }
-    public void OnumberClick(View view) {
-        switch (view.getId()){
-            case R.id.OneNumber:
-                if(textView.getText().toString().equals(0)){
+
+
+    @SuppressLint("NonConstantResourceId")
+    public void onNumberClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_one:
+                if (textView.getText().toString().equals("0")) {
                     textView.setText("1");
-                }else if (isOperationClick){
+                } else if (isOperationClick) {
                     textView.setText("1");
-                }else {
+                } else {
                     textView.append("1");
                 }
                 break;
-            case R.id.twonumber:
-                if(textView.getText().toString().equals(0)){
+
+            case R.id.btn_two:
+                if (textView.getText().toString().equals("0")) {
                     textView.setText("2");
-                }else if (isOperationClick){
+                } else if (isOperationClick) {
                     textView.setText("2");
-                }else {
+                } else {
                     textView.append("2");
                 }
                 break;
-            case R.id.three:
+
+            case R.id.btn_three:
+                if (textView.getText().toString().equals("0")) {
+                    textView.setText("3");
+                } else if (isOperationClick) {
+                    textView.setText("3");
+                } else {
+                    textView.append("3");
+                }
                 break;
-            case R.id.four:
+
+            case R.id.btn_four:
+                if (textView.getText().toString().equals("0")) {
+                    textView.setText("4");
+                } else if (isOperationClick) {
+                    textView.setText("4");
+                } else {
+                    textView.append("4");
+                }
                 break;
-            case R.id.five:
+
+            case R.id.btn_five:
+                if (textView.getText().toString().equals("0")) {
+                    textView.setText("5");
+                } else if (isOperationClick) {
+                    textView.setText("5");
+                } else {
+                    textView.append("5");
+                }
                 break;
-            case R.id.six:
+
+            case R.id.btn_six:
+                if (textView.getText().toString().equals("0")) {
+                    textView.setText("6");
+                } else if (isOperationClick) {
+                    textView.setText("6");
+                } else {
+                    textView.append("6");
+                }
                 break;
-            case R.id.seven:
+
+            case R.id.btn_seven:
+                if (textView.getText().toString().equals("0")) {
+                    textView.setText("7");
+                } else if (isOperationClick) {
+                    textView.setText("7");
+                } else {
+                    textView.append("7");
+                }
                 break;
-            case R.id.eigth:
+
+            case R.id.btn_eight:
+                if (textView.getText().toString().equals("0")) {
+                    textView.setText("8");
+                } else if (isOperationClick) {
+                    textView.setText("8");
+                } else {
+                    textView.append("8");
+                }
                 break;
-            case R.id.nine:
+
+            case R.id.btn_nine:
+                if (textView.getText().toString().equals("0")) {
+                    textView.setText("9");
+                } else if (isOperationClick) {
+                    textView.setText("9");
+                } else {
+                    textView.append("9");
+                }
+                break;
+
+            case R.id.btn_nul:
+                if (textView.getText().toString().equals("0")) {
+                    textView.setText("0");
+                } else if (isOperationClick) {
+                    textView.setText("0");
+                } else {
+                    textView.append("0");
+                }
+                break;
+
+            case R.id.btn_clear:
+                textView.setText("0");
                 break;
         }
-        isOperationClick=false;
+        isOperationClick = false;
     }
-    public void OperationeClick(View view) {
-        switch (view.getId()){
-            case R.id.plus:
-                oneNumber=Integer.parseInt(textView.getText().toString());
+
+
+    public void onOperationClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_plus:
+                first = Integer.parseInt(textView.getText().toString());
+                operation = "+";
                 break;
-            case R.id.minus:
+
+            case R.id.btn_minus:
+                first = Integer.parseInt(textView.getText().toString());
+                operation = "-";
                 break;
-            case R.id.rovno:
-                twoNumber=Integer.parseInt(textView.getText().toString());
-                Integer resultplus=oneNumber+twoNumber;
-                textView.setText(resultplus.toString());
+
+            case R.id.btn_umnojenie:
+                first = Integer.parseInt(textView.getText().toString());
+                operation = "*";
+                break;
+            case R.id.btn_delenie:
+                first = Integer.parseInt(textView.getText().toString());
+                operation = "/";
+                break;
+
+            case R.id.btn_ravno:
+                second = Integer.parseInt(textView.getText().toString());
+                switch (operation) {
+                    case "+":
+                        result = first + second;
+                        break;
+                    case "-":
+                        result = first - second;
+                        break;
+                    case "*":
+                        result = first * second;
+                        break;
+                    case "/":
+                        result = first / second;
+                        break;
+                }
+                textView.setText(result.toString());
+
+                break;
+
+            case R.id.btn_clear:
+                textView.setText("0");
                 break;
         }
-        isOperationClick=true;
+        isOperationClick = true;
     }
+
 }
